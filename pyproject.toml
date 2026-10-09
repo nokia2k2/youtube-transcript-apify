@@ -11,7 +11,7 @@ license = "MIT"
 license-files = ["LICENSE"]
 authors = [{ name = "nokia2k" }]
 requires-python = ">=3.9"
-keywords = ["youtube", "transcript", "subtitles", "captions", "youtube-transcript-api", "mcp", "apify", "srt", "vtt", "rag"]
+keywords = ["youtube", "transcript", "langchain", "document-loader", "subtitles", "captions", "youtube-transcript-api", "mcp", "apify", "srt", "vtt", "rag"]
 classifiers = [
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: MIT License",
@@ -23,6 +23,7 @@ dependencies = ["mcp>=1.2"]
 
 [project.optional-dependencies]
 mcp = []  # kept so `pip install "youtube-transcript-apify[mcp]"` still works
+langchain = ["langchain-core>=0.2"]
 
 [project.scripts]
 yt-transcript-apify = "yt_transcript_apify.cli:main"

@@ -58,6 +58,23 @@ for row in rows:
 
 `fetch` raises `TranscriptError` (with `.status`, e.g. `no_captions`, `private`, `not_found`) when a video has no transcript. `fetch_many` never raises for single videos: each row carries its own `status` and `message`.
 
+## LangChain document loader
+
+```bash
+pip install "youtube-transcript-apify[langchain]"
+```
+
+```python
+from yt_transcript_apify.langchain import YouTubeTranscriptApifyLoader
+
+docs = YouTubeTranscriptApifyLoader(
+    ["https://youtu.be/arj7oStGLkU", "iG9CE55wbtY"], languages=["en"]
+).load()
+print(docs[0].metadata["title"], len(docs[0].page_content))
+```
+
+One `Document` per video, with `title`, `channelName`, `language`, `durationSeconds` and `source` in the metadata. Videos without captions are skipped. Works the same on AWS, GCP or Vercel, where the classic loader gets IP-blocked.
+
 ## Command line
 
 ```bash
