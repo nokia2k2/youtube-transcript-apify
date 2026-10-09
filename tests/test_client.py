@@ -120,3 +120,14 @@ def test_mcp_tools(capture):
     capture["reply"] = [ROW_OK, ROW_NONE]
     many = m.get_youtube_transcripts(["arj7oStGLkU", "dQw4w9WgXcQ"])
     assert "government major" in many and "No transcript" in many
+
+
+def test_langchain_loader(capture):
+    from yt_transcript_apify.langchain import YouTubeTranscriptApifyLoader
+
+    capture["reply"] = [ROW_OK, ROW_NONE]
+    docs = YouTubeTranscriptApifyLoader(["arj7oStGLkU", "dQw4w9WgXcQ"], languages=["en"]).load()
+    assert len(docs) == 1
+    assert docs[0].page_content.startswith("So in college")
+    assert docs[0].metadata["title"].startswith("Inside") and docs[0].metadata["source"].endswith("arj7oStGLkU")
+    assert capture["body"]["languages"] == ["en"]
