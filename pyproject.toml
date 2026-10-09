@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "youtube-transcript-apify"
+version = "0.1.0"
+description = "YouTube transcripts that keep working on AWS, GCP, Vercel and other cloud servers: a drop-in for youtube-transcript-api's RequestBlocked / IpBlocked errors, plus an MCP server for Claude and Cursor."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "nokia2k" }]
+requires-python = ">=3.9"
+keywords = ["youtube", "transcript", "subtitles", "captions", "youtube-transcript-api", "mcp", "apify", "srt", "vtt", "rag"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Video",
+  "Topic :: Text Processing",
+]
+dependencies = ["mcp>=1.2"]
+
+[project.optional-dependencies]
+mcp = []  # kept so `pip install "youtube-transcript-apify[mcp]"` still works
+
+[project.scripts]
+yt-transcript-apify = "yt_transcript_apify.cli:main"
+yt-transcript-apify-mcp = "yt_transcript_apify.mcp_server:main"
+youtube-transcript-apify = "yt_transcript_apify.mcp_server:main"
+
+[project.urls]
+Source = "https://github.com/nokia2k2/youtube-transcript-apify"
+"Apify Actor" = "https://apify.com/nokia2k/youtube-transcript-scraper"
+"Bulk plain text" = "https://apify.com/nokia2k/youtube-video-to-text"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/yt_transcript_apify"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

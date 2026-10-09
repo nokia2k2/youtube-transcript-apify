@@ -1,0 +1,13 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required: [apifyToken]
+    properties:
+      apifyToken:
+        type: string
+        description: "Apify API token (free plan works): https://console.apify.com/settings/integrations"
+  commandFunction: |-
+    (config) => ({ command: 'youtube-transcript-apify', args: [], env: { APIFY_TOKEN: config.apifyToken } })
+  exampleConfig:
+    apifyToken: apify_api_xxxxxxxxxxxxxxxx
