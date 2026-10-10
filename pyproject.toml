@@ -5,13 +5,13 @@ build-backend = "hatchling.build"
 [project]
 name = "youtube-transcript-apify"
 version = "0.1.0"
-description = "YouTube transcripts that keep working on AWS, GCP, Vercel and other cloud servers: a drop-in for youtube-transcript-api's RequestBlocked / IpBlocked errors, plus an MCP server for Claude and Cursor."
+description = "YouTube transcript API for Python that works on AWS, GCP and Vercel: a drop-in fix for youtube-transcript-api RequestBlocked / IpBlocked errors. Text, SRT, VTT, CLI and MCP server."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [{ name = "nokia2k" }]
 requires-python = ">=3.9"
-keywords = ["youtube", "transcript", "langchain", "document-loader", "subtitles", "captions", "youtube-transcript-api", "mcp", "apify", "srt", "vtt", "rag"]
+keywords = ["youtube", "youtube-transcript", "youtube-transcript-api", "transcript", "subtitles", "captions", "srt", "vtt", "requestblocked", "ipblocked", "mcp", "mcp-server", "langchain", "document-loader", "rag", "ai-agents", "apify"]
 classifiers = [
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: MIT License",
